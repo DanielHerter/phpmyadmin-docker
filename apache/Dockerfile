@@ -138,6 +138,7 @@ COPY config.inc.php /etc/phpmyadmin/config.inc.php
 
 # Copy main script
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chown :root /docker-entrypoint.sh
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["apache2-foreground"]
