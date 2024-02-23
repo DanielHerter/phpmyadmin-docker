@@ -10,7 +10,7 @@ EOT
 
     if [ ! -f /etc/phpmyadmin/config.user.inc.php ]; then
         touch /etc/phpmyadmin/config.user.inc.php
-        ls -l /etc/phpmyadmin
+        ls -la /etc/phpmyadmin
     fi
 fi
 
