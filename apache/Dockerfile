@@ -139,9 +139,10 @@ RUN mkdir -p /etc/phpmyadmin && \
 RUN chmod 775 /etc/phpmyadmin
 
 #Make Directionary and change permissions for apache port
-RUN mkdir -p /etc/apache2 && \
+RUN mkdir -p /etc/apache2/sites-enabled && \
     chown :root /etc/apache2
 RUN chmod 775 /etc/apache2
+RUN chmod 775 /etc/apache2/sites-enabled
 
 # Copy configuration
 COPY config.inc.php /etc/phpmyadmin/config.inc.php
