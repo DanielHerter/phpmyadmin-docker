@@ -136,6 +136,7 @@ RUN set -ex; \
 
 RUN mkdir -p /etc/phpmyadmin && \
     chown :root /etc/phpmyadmin
+RUN chmod 775 /etc/phpmyadmin
 
 # Copy configuration
 COPY config.inc.php /etc/phpmyadmin/config.inc.php
