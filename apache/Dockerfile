@@ -133,10 +133,15 @@ RUN set -ex; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
-
+# Make Directionary and change permissions
 RUN mkdir -p /etc/phpmyadmin && \
     chown :root /etc/phpmyadmin
 RUN chmod 775 /etc/phpmyadmin
+
+#Make Directionary and change permissions for apache port
+RUN mkdir -p /etc/apache2 && \
+    chown :root /etc/apache2
+RUN chmod 775 /etc/apache2
 
 # Copy configuration
 COPY config.inc.php /etc/phpmyadmin/config.inc.php
@@ -145,7 +150,7 @@ COPY config.inc.php /etc/phpmyadmin/config.inc.php
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN chown :root /docker-entrypoint.sh
-RUN chmod 774 /docker-entrypoint.sh
+RUN chmod 775 /docker-entrypoint.sh
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["apache2-foreground"]
